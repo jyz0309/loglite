@@ -19,7 +19,6 @@ func Parse(sql string) error {
 		fmt.Println(stmt)
 	case *sqlparser.Show:
 		path, _ := os.Getwd()
-		fmt.Println(path)
 		e = executor.BuildShowExecutor(stmt, path)
 	default:
 		return fmt.Errorf("unsupport query type")
@@ -28,7 +27,6 @@ func Parse(sql string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(rs.Keys())
 
 	for {
 		set, done, err := rs.Next()
